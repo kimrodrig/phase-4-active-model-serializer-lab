@@ -11,6 +11,11 @@ class PostsController < ApplicationController
     render json: post
   end
 
+  def short_content
+    content = Post.find(params[:id]).content[0,40] + "..."
+    render json: content
+  end
+
   private
 
   def render_not_found_response
